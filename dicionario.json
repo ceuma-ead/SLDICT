@@ -1,0 +1,12 @@
+[
+    {
+        "ativo":true,
+        "servidor":"dicio",
+        "script":"./dicio/index.js"
+    },
+    {
+        "ativo":true,
+        "servidor":"michaelis",
+        "script":"./michaelis/index.js"
+    }
+]
