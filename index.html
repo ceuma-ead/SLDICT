@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
  
-    
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,6 +27,7 @@
         }
 
         #result {
+            position: relative;
             background-color: white;
             padding: 20px;
             border-radius: 4px;
@@ -67,6 +68,39 @@
         .conteudo .cl{
             font-weight: bold;
         }
+
+        .loader {
+
+            display: inline-block;
+            font-size: 48px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #383838;
+            position: relative;
+
+          }
+          .loader::before {
+            content: '';  
+            position: absolute;
+            left: 34px;
+            bottom: 17px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 5px solid #383838;
+            border-bottom-color: #FF3D00;
+            box-sizing: border-box;
+            animation: rotation 0.6s linear infinite;
+          }
+          
+          @keyframes rotation {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          } 
     </style>
 </head>
 <body>
@@ -74,6 +108,8 @@
         <h1 class="text-center">Dicionário Reverse Proxy Ceuma</h1>
         <h5 class="text-center">-- Reverse Engineer --</h5>
         <div class="row mt-4">
+
+            
             <!-- Left container for search form -->
             <div class="col-md-6">
                 <h5>Escolha o Servidor</h5>
@@ -89,11 +125,13 @@
             </div>
 
             <!-- Right container for search results -->
-            <div class="col-md-6">
+            <div class="col-md-6 position-relative">
                 <div>
                     <button id="audio-button">🔊 Ouvir Texto</button>
                 </div>
+                <span id="loader" class="loader" style="display: none;">L &nbsp; ading</span>
                 <div id="result">
+
               
                     <p>Resultados aparecerão aqui...</p>
                 </div>

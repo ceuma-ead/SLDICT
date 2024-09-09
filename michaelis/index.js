@@ -16,7 +16,15 @@ async function requisicao(url) {
 }
 
 async function buscarPalavra(palavra) {
+    const loading = document.getElementById('loader');
+    const resultContainer = document.getElementById('result');
     const url = `https://michaelis.uol.com.br/moderno-portugues/busca/portugues-brasileiro/${palavra}/`;
+
+    if (loading) {
+        // Exibe o loader
+        loading.style.display = 'block';
+        resultContainer.innerHTML = ''; // Limpa os resultados anteriores
+    }
 
     try {
         const dados = await requisicao(url);
@@ -63,6 +71,11 @@ async function buscarPalavra(palavra) {
     } catch (erro) {
         console.error(erro);
         $("#result").html("<p>Erro ao buscar a palavra.</p>");
+    }finally {
+        if (loading) {
+            // Esconde o loader após a busca ser concluída (com sucesso ou erro)
+            loading.style.display = 'none';
+        }
     }
 }
 
